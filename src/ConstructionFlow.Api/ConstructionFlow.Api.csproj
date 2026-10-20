@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <ProjectReference Include="..\ConstructionFlow.Infrastructure\ConstructionFlow.Infrastructure.csproj" />
+    <ProjectReference Include="$(AIFrameworkRoot)\src\AIFramework.Application\AIFramework.Application.csproj" />
+    <ProjectReference Include="$(AIFrameworkRoot)\src\AIFramework.Local\AIFramework.Local.csproj" />
+    <ProjectReference Include="$(AIFrameworkRoot)\src\AIFramework.Azure\AIFramework.Azure.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+  </ItemGroup>
+</Project>

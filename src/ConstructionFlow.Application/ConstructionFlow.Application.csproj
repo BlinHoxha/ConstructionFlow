@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\ConstructionFlow.Domain\ConstructionFlow.Domain.csproj" />
+    <ProjectReference Include="$(AIFrameworkRoot)\src\AIFramework.Core\AIFramework.Core.csproj" />
+    <ProjectReference Include="$(AIFrameworkRoot)\src\AIFramework.Application\AIFramework.Application.csproj" />
+  </ItemGroup>
+</Project>

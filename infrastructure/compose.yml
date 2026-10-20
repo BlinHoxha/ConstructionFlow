@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: constructionflow
+      POSTGRES_USER: constructionflow
+      POSTGRES_PASSWORD: ${CONSTRUCTIONFLOW_DB_PASSWORD:?Set CONSTRUCTIONFLOW_DB_PASSWORD in your shell}
+    ports:
+      - "127.0.0.1:${CONSTRUCTIONFLOW_DB_PORT:-5433}:5432"
+    volumes:
+      - constructionflow-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U constructionflow -d constructionflow"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  constructionflow-postgres:

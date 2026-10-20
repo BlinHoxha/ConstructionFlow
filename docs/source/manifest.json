@@ -1,0 +1,22 @@
+﻿[
+    {
+        "file":  "01_Business_Plan.pdf",
+        "sha256":  "925c719b5efe8651ea941ab3e72353fc9ddee9648a5eb8aaabeeba7ee0b06333",
+        "bytes":  80801
+    },
+    {
+        "file":  "02_Functional_Workflows.pdf",
+        "sha256":  "6e6ee3323fdfe34c662d445e6f18a640836ac00ae7df996604a696f1c1262338",
+        "bytes":  80875
+    },
+    {
+        "file":  "03_Technical_Architecture_Workflows.pdf",
+        "sha256":  "7ad7cf98b6227524ebc523c65138e8d2258c09f36e4f2533a3fe7599953b4ec7",
+        "bytes":  84077
+    },
+    {
+        "file":  "ConstructionFlow_AI_Database_Design.pdf",
+        "sha256":  "a3a0a0e0463b938dd2178801df2802954e499f87527cc5ef4fcf069b66e957b8",
+        "bytes":  95969
+    }
+]

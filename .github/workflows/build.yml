@@ -1,0 +1,46 @@
+name: ConstructionFlow verification
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: windows-latest
+    env:
+      FRAMEWORK_REPOSITORY: ${{ vars.FRAMEWORK_REPOSITORY }}
+      AI_FRAMEWORK_REPOSITORY: ${{ vars.AI_FRAMEWORK_REPOSITORY }}
+    steps:
+      - name: Validate sibling checkout configuration
+        shell: pwsh
+        run: |
+          if (!$env:FRAMEWORK_REPOSITORY -or !$env:AI_FRAMEWORK_REPOSITORY) {
+            throw 'Set FRAMEWORK_REPOSITORY and AI_FRAMEWORK_REPOSITORY repository variables to owner/repository names.'
+          }
+      - uses: actions/checkout@v4
+        with:
+          path: ConstructionFlow
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.FRAMEWORK_REPOSITORY }}
+          ref: ${{ vars.FRAMEWORK_REF }}
+          path: Framework
+          token: ${{ secrets.WORKSPACE_READ_TOKEN || github.token }}
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.AI_FRAMEWORK_REPOSITORY }}
+          ref: ${{ vars.AI_FRAMEWORK_REF }}
+          path: AI-Framework
+          token: ${{ secrets.WORKSPACE_READ_TOKEN || github.token }}
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+      - name: Restore
+        working-directory: ConstructionFlow
+        run: dotnet restore ConstructionFlow.sln
+      - name: Build
+        working-directory: ConstructionFlow
+        run: dotnet build ConstructionFlow.sln --no-restore -c Release
+      - name: Test including PostgreSQL migration consistency
+        working-directory: ConstructionFlow
+        run: dotnet test ConstructionFlow.sln --no-build --no-restore -c Release

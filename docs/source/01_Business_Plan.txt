@@ -1,0 +1,222 @@
+Business Plan
+
+Market opportunity, positioning, pricing, economics, go-to-market and launch
+gates
+
+ConstructionFlow AI | Kosovo-first, multilingual SaaS | Version 1.0
+
+Document purpose
+
+A practical planning reference. All costs, dates, market assumptions, pricing and estimates are illustrative
+and must be validated with local customers, engineering specialists, legal advisers and actual vendor
+quotes.
+
+ConstructionFlow AI | Planning edition | October 2026                                                         1
+Contents
+
+1. Executive summary
+2. Market opportunity and customer discovery
+3. Product and competitive positioning
+4. Business model and pricing
+5. Go-to-market strategy
+6. Operations and organization
+7. Financial scenarios and break-even
+8. Risks, compliance and controls
+9. Milestones, KPIs and decision gates
+
+ConstructionFlow AI | Planning edition | October 2026  2
+1. Executive summary
+
+ConstructionFlow AI is a Kosovo-first B2B SaaS platform for small and mid-sized contractors, developers and
+construction project managers. It combines project tracking, procurement, document intelligence and site
+reporting. Its differentiator is Albanian-first workflows with auditable AI assistance, rather than autonomous
+engineering decisions.
+
+· Initial wedge: quotations, invoices, purchase orders and daily site reports.
+
+· Primary buyer: owner/director of a contractor managing 2-10 concurrent projects.
+
+· Economic hypothesis: save 4-10 administrative hours per project per week; validate through timed pilots,
+not marketing claims.
+
+· Go/no-go: at least 3 paid pilot commitments and repeatable weekly usage before expanding scope.
+
+2. Market opportunity and customer discovery
+
+Target segments                      Jobs to be done                        Buying trigger
+
+  Segment
+
+Small contractor                     Capture expenses, materials and daily  Lost paperwork and budget surprises
+                                     reports
+
+Developer / general contractor       Monitor several sites and              Poor visibility across projects
+                                     subcontractors
+
+Quantity surveyor / project manager  Compare bids and evidence decisions Manual comparison effort
+
+Subcontractor                        Submit progress, timesheets,           Slow approvals and payment disputes
+                                     variations
+
+Research plan
+
+· Interview 12-20 companies in Prishtina, Prizren, Peja and other markets; stratify by company size and
+construction specialty.
+
+· Ask for anonymized sample supplier offers, invoices, BOQs, daily logs and project spreadsheets; measure
+baseline process times.
+
+· Map competing alternatives: Excel, WhatsApp, email, accounting software and established construction
+SaaS; validate local language and price gaps.
+
+· Assess connectivity at sites, mobile usage, tax-document workflows, approval authority and data
+residency preferences.
+
+3. Product and competitive positioning
+
+Position as the operational layer between the construction site, procurement and owner reporting. Do not
+attempt to replace CAD, BIM authoring, accounting, structural design or licensed engineering review in the
+MVP.
+
+ConstructionFlow AI | Planning edition | October 2026                                                            3
+Capability                         MVP                         Later
+Multi-project dashboard            Yes                         Portfolio forecasting
+Quote comparison                   Yes                         Supplier performance scoring
+Invoices and document extraction   Yes                         Accounting integrations
+Albanian voice-to-site-report      Pilot                       Offline mobile capture
+BOQ / drawing quantity extraction  No                          Engineer-verified specialized module
+Photo-based progress assessment    No                          Validated computer vision workflows
+
+Differentiation
+
+· Albanian-language forms, terminology and speech; optional English and Serbian.
+· Human-approved AI results with document references, confidence and correction history.
+· Low-friction onboarding from PDF, spreadsheet, photo and voice note.
+
+4. Business model and pricing
+
+Plan                               Illustrative price / month  Guardrails
+Starter                            EUR 39
+Professional                       EUR 99                      1 active project, 3 seats, limited AI
+Enterprise                         EUR 249+                    credits
+
+                                                               5 projects, 15 seats, moderate AI
+                                                               allowance
+
+                                                               Negotiated seats, storage, integrations
+                                                               and SLA
+
+· Bill AI-intensive OCR, transcription and LLM usage against a transparent monthly allowance and overage
+policy.
+· Optional paid onboarding: historical data import, training and workflow configuration.
+· Do not promise unlimited AI processing or unlimited storage at flat prices.
+
+ConstructionFlow AI | Planning edition | October 2026                                                     4
+Unit economics model - illustrative                    Pilot assumption
+                                                       EUR 99
+  Metric                                               EUR 15-35 per account / month
+  Professional monthly revenue                         EUR 64-84 / month
+  Infrastructure + AI variable cost                    Measure during first 10 paying customers
+  Gross contribution before support                    Track monthly; no assumed benchmark
+  Acquisition cost
+  Churn and retention
+
+5. Go-to-market strategy
+
+· Phase 0: recruit 5 design partners, preferably 2 contractors, 1 developer, 1 project manager and 1
+subcontractor.
+· Run 30-day pilots using real but permissioned project documents and explicit data-processing terms.
+· Show before/after demonstrations: three supplier quotations processed in minutes, daily report drafted
+from a voice note.
+· Use referrals from accountants, project managers, engineers and construction suppliers.
+· Offer onboarding in Albanian and guided imports from Excel; focus on one city before nationwide
+outreach.
+· Expand regionally only after localization, regulations and document formats are verified.
+
+6. Operations and organization
+
+Function                      Initial owner            Operational requirement
+Product / customer discovery  Founder
+Engineering / DevOps          Founder + contractor     Weekly interviews and prioritization
+Construction domain review    External engineer / QS
+                                                       Secure deployments and monitoring
+Sales / onboarding            Founder
+Legal / privacy / accounting  Local advisers           Validate terminology, estimates and
+                                                       workflows
+
+                                                       Demos, training and support
+
+                                                       Contracts, data processing and tax
+                                                       obligations
+
+· Customer support target: respond to high-severity outages same business day during pilot; formal SLAs
+only when staffed.
+
+· Maintain a written incident process, backup restoration tests, access review and deletion procedure.
+
+ConstructionFlow AI | Planning edition | October 2026                                                     5
+7. Financial scenarios and break-even
+
+The following is a sensitivity exercise, not a forecast. Assume blended monthly subscription revenue of EUR
+85 per paying account and EUR 25 variable service cost per account; fixed monthly operating costs are
+assumed at EUR 2,000, excluding founder salary unless explicitly included.
+
+Paying accounts  Monthly revenue                       Contribution after variable  After EUR 2,000 fixed
+                                                       costs
+10               EUR 850
+25               EUR 2,125                             EUR 600                      -EUR 1,400
+40               EUR 3,400
+75               EUR 6,375                             EUR 1,500                    -EUR 500
+
+                                                       EUR 2,400                    EUR 400
+
+                                                       EUR 4,500                    EUR 2,500
+
+· Illustrative break-even: 34 paying accounts at EUR 60 contribution each, before taxes, financing and
+founder compensation if not included.
+
+· Track cash runway, onboarding labor, document volume, AI unit costs, payment collection and support
+time.
+
+· Prepare base, downside and upside scenarios after first paid pilots; never extrapolate solely from
+interviews.
+
+8. Risks, compliance and controls
+
+Risk                                                   Mitigation
+Wrong quantities or estimates                          Engineering approval, no autonomous design sign-off
+Sensitive project and employee data                    Tenant isolation, RBAC, encryption, retention controls
+Hallucinated contract interpretations                  Grounded retrieval, citations, abstention
+Low adoption on site                                   Fast mobile forms, voice and offline roadmap
+AI operating-cost spikes                               Quotas, batching, usage monitoring
+Vendor lock-in                                         Provider abstraction and exportable data
+Regulatory differences                                 Local legal review before launch or expansion
+
+· Check applicable Kosovo privacy, employment, accounting, construction and procurement rules with
+qualified advisers; do not assume that generic EU templates alone establish compliance.
+
+ConstructionFlow AI | Planning edition | October 2026                                                          6
+9. Milestones, KPIs and decision gates
+
+Period       Milestone                                 Gate
+Weeks 1-2                                              3 strong design partners
+             Interviews, sample documents,
+Weeks 3-6    prototype                                 End-to-end tasks completed
+
+Weeks 7-10   Project + supplier + expense              Human-reviewed extraction quality
+Weeks 11-14  workflows                                 3 paid commitments
+Months 4-6                                             Weekly active companies, low
+             OCR, AI comparison, daily reports         correction burden
+
+             Live pilots and fixes
+
+             Retention and sales repeatability
+
+· Core KPIs: active projects, weekly active site reporters, documents processed, extraction correction rate,
+time saved per workflow, trial-to-paid conversion, retention and gross margin.
+
+· Stop or pivot if the buyer does not own the problem, workflows are too variable, or correction effort
+exceeds manual effort.
+
+ConstructionFlow AI | Planning edition | October 2026                                                         7
+

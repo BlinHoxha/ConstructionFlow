@@ -1,0 +1,220 @@
+Functional Specification &
+Workflows
+
+Roles, end-to-end processes, business rules, acceptance criteria and user
+journeys
+
+ConstructionFlow AI | Kosovo-first, multilingual SaaS | Version 1.0
+
+Document purpose
+
+A practical planning reference. All costs, dates, market assumptions, pricing and estimates are illustrative
+and must be validated with local customers, engineering specialists, legal advisers and actual vendor
+quotes.
+
+ConstructionFlow AI | Planning edition | October 2026                                                         1
+Contents
+
+1. Actors, permissions and operating principles
+2. End-to-end customer journey
+3. Project setup workflow
+4. Supplier quotation workflow
+5. Invoice and material receipt workflow
+6. Daily site report workflow
+7. AI document Q&A workflow
+8. Dashboards and reporting
+9. Functional requirements and user stories
+10. Non-functional requirements and UX
+11. UAT scripts and release criteria
+
+ConstructionFlow AI | Planning edition | October 2026  2
+1. Actors, permissions and operating principles
+
+Actor                                                  Core rights
+Organization owner                                     Subscription, tenant settings, project portfolio
+Project manager                                        Budget, schedules, approval policies, project users
+Site engineer                                          Daily logs, photos, material receipt, issue reporting
+Procurement officer                                    Suppliers, RFQs, quote comparison, purchase orders
+Accountant / finance                                   Invoices, payment status, cost codes, exports
+Subcontractor                                          Restricted assigned tasks and evidence uploads
+Auditor / viewer                                       Read-only scoped reporting and audit trail
+
+· Every record belongs to an organization and optionally a project; access is least-privilege.
+· AI suggestions never bypass financial approval or engineer review.
+
+2. End-to-end customer journey
+
+· 1. Owner registers an organization, selects locale, invites employees and creates a project.
+· 2. Manager configures project budget, cost codes, milestones and approval thresholds.
+· 3. Team imports existing supplier lists, budget spreadsheets and documents.
+· 4. Procurement issues RFQs, receives quotations, compares normalized offers and submits a selection.
+· 5. Site engineer logs daily progress, materials, blockers and photos, optionally by voice.
+· 6. Finance reviews extracted invoices and matches them to orders or deliveries.
+· 7. Manager reviews cost and schedule dashboards and approves corrective actions.
+· 8. Owner exports a weekly project summary with linked evidence and open risks.
+
+3. Project setup workflow
+
+Trigger and prerequisites
+
+Authorized manager creates a project. Required: project name, location at city level, start date, currency,
+responsible manager; optional: estimated end date, project category, baseline budget.
+
+Happy path
+
+· Create draft project -> validate dates and permissions -> assign cost-code template -> invite members ->
+set baseline -> activate.
+
+ConstructionFlow AI | Planning edition | October 2026                                                         3
+Exceptions and acceptance criteria
+
+· Duplicate project code is rejected within a tenant; missing required fields show actionable errors.
+· Baseline revisions create immutable version history; only authorized roles can approve changes.
+· Project summary must show status, latest approved baseline and current commitments.
+
+4. Supplier quotation workflow
+
+Detailed sequence
+
+· Procurement creates RFQ with material description, unit, quantity, delivery date, specification and tax
+handling.
+· Suppliers send PDF/image/Excel quotations; user uploads or forwards into an authorized ingestion
+channel.
+· OCR extracts supplier, item, unit, price, VAT, delivery, currency and payment terms into a review queue.
+· Normalize comparable units and flag ambiguous units, missing specifications and inconsistent tax
+treatment.
+· Display side-by-side quotes; compute totals deterministically; highlight cheapest compliant option but
+never auto-select.
+· Procurement submits recommendation -> approver accepts/rejects -> approved PO is generated -> audit
+log retained.
+
+Exceptions
+
+· Unknown currency exchange rate: require a manually confirmed rate and date.
+· Missing unit conversion or concrete grade mismatch: mark quotes non-comparable.
+· Duplicate offer, expired validity or supplier withdrawal: warn and prevent silent overwrites.
+
+5. Invoice and material receipt workflow
+
+· 1. Upload invoice and delivery note; virus scan and store original.
+· 2. Extract supplier, tax details, invoice number, lines, quantities, unit prices and totals.
+· 3. Match supplier and PO; reconcile ordered vs delivered vs invoiced quantities.
+· 4. Flag duplicates, mismatches, missing delivery evidence and unusual price differences.
+· 5. Finance corrects and confirms; approved record updates actual costs, not merely AI output.
+· 6. Export to accounting as CSV/API where available; record sync outcome and retries.
+
+Acceptance criteria
+
+· No invoice can be approved without a traceable source document and reviewer identity.
+· Repeated invoice number for the same supplier generates a duplicate warning, with override rationale.
+
+ConstructionFlow AI | Planning edition | October 2026                                                       4
+6. Daily site report workflow
+
+· 1. Engineer selects project, site zone, date and shift.
+· 2. Engineer types notes or records an Albanian voice memo; attaches photos and material receipts.
+· 3. Transcription returns editable text with timestamps where supported.
+· 4. AI proposes structured activities, workers, equipment, materials, blockers and safety observations.
+· 5. Engineer edits fields and confirms factual accuracy; report is submitted.
+· 6. Project manager reviews blockers and creates assigned follow-up tasks.
+· 7. Weekly digest aggregates only approved daily reports and links to source entries.
+
+Exceptions
+
+· Low-quality audio or uncertain terms require manual confirmation; never invent quantities.
+· Offline submissions should be queued locally only in a future offline-enabled release with encrypted
+device storage.
+
+7. AI document Q&A workflow
+
+· 1. User uploads approved project documents with classification and access scope.
+· 2. Processing extracts text, chunks it, stores embeddings and source offsets.
+· 3. User asks a question; search filters documents by tenant, project and permission.
+· 4. Assistant produces an answer with citations to document title, page/section and version.
+· 5. When evidence is missing or conflicting, it abstains or highlights the discrepancy.
+· 6. User can open the exact source, give feedback or flag a wrong answer.
+
+Acceptance criteria
+
+· No answer may cite documents the user is unauthorized to view.
+· Answers about contractual responsibility require cited clauses and clear uncertainty language.
+
+ConstructionFlow AI | Planning edition | October 2026                                                     5
+8. Dashboards and reporting
+
+Dashboard                                              Metrics / views
+Owner portfolio
+                                                       Project status, budget baseline, committed, actual, open
+Project manager                                        risks
+Procurement
+Finance                                                Milestones, delayed tasks, daily logs, pending approvals
+
+Site engineer                                          RFQ cycle time, supplier comparisons, open POs
+
+                                                       Unmatched invoices, expenses by cost code, cash
+                                                       commitments
+
+                                                       Today tasks, blockers, drafts, submitted reports
+
+· Budget consumed is not a substitute for physical completion; show them separately and explain data
+freshness.
+
+· Exports: PDF summary and CSV/XLSX for authorized roles, with redaction where necessary.
+
+9. Functional requirements and user stories
+
+ID                                                     Requirement / acceptance signal
+FR-01                                                  Organization and project creation with tenant-safe access
+FR-02                                                  Role-based invitations and scoped permissions
+FR-03                                                  Budget baseline and revision history
+FR-04                                                  RFQ creation, quotation ingestion and normalized
+                                                       comparison
+FR-05                                                  Human-approved purchase order creation
+FR-06                                                  Invoice extraction and 3-way matching flags
+FR-07                                                  Editable Albanian voice transcription to daily report
+FR-08                                                  Task creation from approved blockers
+FR-09                                                  Permission-filtered RAG with page-level citations
+FR-10                                                  Dashboard, filters, export and audit history
+
+· Example user story: As a procurement officer, I can compare three quotations with the same unit and
+specification so I can recommend a supplier in less time; acceptance: totals are deterministic, missing
+terms are flagged, and selection requires approval.
+
+ConstructionFlow AI | Planning edition | October 2026                                                             6
+10. Non-functional requirements and UX
+
+· Accessibility: keyboard support, sufficient contrast, clear form labels and readable mobile layouts.
+
+· Localization: Albanian first; translations use reviewed construction vocabulary; dates, decimal separators
+and EUR formatting are consistent.
+
+· Performance target: typical dashboard under 3 seconds at pilot load; async documents show processing
+status and retry actions.
+
+· Availability objective for pilot: 99.5% monthly excluding announced maintenance; reassess before
+contracted SLA.
+
+· Security: least privilege, MFA for administrators, audit logs, encrypted transport and storage.
+
+· Retention and deletion: configurable policies, legal-hold exceptions where applicable, and documented
+export.
+
+· AI quality: measure extraction field precision, transcription correction rate and unsupported answer rate
+by document type.
+
+11. UAT scripts and release criteria
+
+Test                                                   Expected result
+Cross-tenant user opens foreign project                Denied, logged, no metadata leak
+Quotation uses inconsistent units                      Comparison blocked until normalized
+Invoice repeated                                       Duplicate warning with review workflow
+Unclear Albanian audio                                 Editable transcript with uncertainty
+RAG question without evidence                          No fabricated clause or page citation
+Project manager approves PO                            Approval identity and version recorded
+Export by restricted subcontractor                     Only authorized project scope included
+
+· Pilot exit criteria: 90%+ completion of priority workflows in supervised UAT, zero critical cross-tenant
+defects, verified backup restoration and signed acceptance from design partners.
+
+ConstructionFlow AI | Planning edition | October 2026                                                         7
+
